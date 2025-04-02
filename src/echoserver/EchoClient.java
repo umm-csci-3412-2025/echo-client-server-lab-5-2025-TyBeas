@@ -12,7 +12,7 @@ public class EchoClient {
     public static void main(String[] args) {
         String server;
         if (args.length == 0){
-            server = "127.0.0.1"
+            server = "127.0.0.1";
         } else {
             server = args[0];
         }
