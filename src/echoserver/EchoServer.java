@@ -12,7 +12,7 @@ public class EchoServer {
             ServerSocket sock = new ServerSocket(PORT);
             while (true) {
                 Socket client = sock.accept();
-                System.out.println("Request Recieved")
+                System.out.println("Request Received");
                 InputStream input = client.getInputStream();
                 OutputStream output = client.getOutputStream();
                 int b;
