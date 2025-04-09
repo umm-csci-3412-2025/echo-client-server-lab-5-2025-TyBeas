@@ -23,7 +23,7 @@ public class EchoServer {
                 }
                 output.flush();
                 client.close();
-                sock.close();
+                Socket.close();
             }
         } catch (IOException ioe) {
             System.out.println("We caught an unexpected exception");
