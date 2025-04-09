@@ -1,10 +1,7 @@
 package echoserver;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 
 public class EchoServer {
     public static final int PORT = 6013;
@@ -12,18 +9,17 @@ public class EchoServer {
     public static void main(String[] args) {
 
         try {
-            ServerSocket server = new ServerSocket(PORT);
-            int b;
+            ServerSocket sock = new ServerSocket(PORT);
             while (true) {
-                Socket client = server.accept();
+                Socket client = sock.accept();
+                System.out.println("Request Recieved")
                 InputStream input = client.getInputStream();
                 OutputStream output = client.getOutputStream();
-                while ((b = input.read()) >= 0) {
+                int b;
+                while ((b = input.read()) != -1) {
                     output.write(b);
                 }
-                output.flush();
                 client.close();
-                Socket.close();
             }
         } catch (IOException ioe) {
             System.out.println("We caught an unexpected exception");

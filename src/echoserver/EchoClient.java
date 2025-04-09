@@ -1,15 +1,12 @@
 package echoserver;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.ConnectException;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 
 public class EchoClient {
     public static final int PORT = 6013;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         String server;
         if (args.length == 0){
             server = "127.0.0.1";
@@ -21,12 +18,10 @@ public class EchoClient {
             InputStream input = socket.getInputStream();
             OutputStream output = socket.getOutputStream();
             int b;
-            while ((b = System.in.read()) >= 0) {
+            while ((b = System.in.read()) != -1) {
                 output.write(b);
                 System.out.write(input.read());
-                b = System.in.read();
             }
-            output.flush();
             System.out.flush();
             socket.close();
 
